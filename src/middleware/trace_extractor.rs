@@ -173,6 +173,7 @@ impl<B> MakeSpan<B> for OtelMakeSpan {
             otel.kind = %"server", //opentelemetry::trace::SpanKind::Server
             otel.status_code = Empty,
             trace_id = %trace_id,
+            "span.type" = "web",
         );
         tracing_opentelemetry::OpenTelemetrySpanExt::set_parent(&span, remote_context);
         span
