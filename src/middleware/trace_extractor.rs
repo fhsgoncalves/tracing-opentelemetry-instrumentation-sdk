@@ -320,8 +320,8 @@ fn create_context_with_trace(
 ) -> (opentelemetry::Context, TraceId) {
     if !remote_context.span().span_context().is_valid() {
         // create a fake remote context but with a fresh new trace_id
-        use opentelemetry::sdk::trace::IdGenerator;
-        use opentelemetry::sdk::trace::RandomIdGenerator;
+        use opentelemetry_sdk::trace::IdGenerator;
+        use opentelemetry_sdk::trace::RandomIdGenerator;
         use opentelemetry::trace::{SpanContext, SpanId};
         let trace_id = RandomIdGenerator::default().new_trace_id();
         let new_span_context = SpanContext::new(

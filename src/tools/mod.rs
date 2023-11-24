@@ -1,11 +1,11 @@
 use opentelemetry::propagation::TextMapPropagator;
-use opentelemetry::sdk::propagation::{
+use opentelemetry_sdk::propagation::{
     BaggagePropagator, TextMapCompositePropagator, TraceContextPropagator,
 };
 #[cfg(feature = "tracer")]
-use opentelemetry::sdk::trace::Tracer;
+use opentelemetry_sdk::trace::Tracer;
 #[cfg(feature = "tracer")]
-use opentelemetry::sdk::Resource;
+use opentelemetry_sdk::Resource;
 use opentelemetry::trace::TraceError;
 
 #[cfg(feature = "jaeger")]

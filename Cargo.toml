@@ -15,7 +15,8 @@ axum = "0.6"
 # axum-core = "0.3"
 futures = "0.3"
 http = "0.2"
-opentelemetry = { version = "0.20", features = ["rt-tokio"] }
+opentelemetry = { version = "0.21.0"}
+opentelemetry_sdk = { version = "0.21.0", features = ["rt-tokio"] }
 opentelemetry-aws = { version = "0.8", optional = true }
 opentelemetry-jaeger = { version = "0.19", features = [
   "rt-tokio",
@@ -28,7 +29,7 @@ opentelemetry-zipkin = { version = "0.18", features = [], optional = true }
 tower = "0.4"
 tower-http = { version = "0.4", features = ["trace"] }
 tracing = "0.1"
-tracing-opentelemetry = "0.20.0"
+tracing-opentelemetry = "0.22.0"
 tracing-subscriber = { version = "0.3", default-features = false, features = [
   "ansi",
   "env-filter",
