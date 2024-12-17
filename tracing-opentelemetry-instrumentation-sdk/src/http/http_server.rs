@@ -21,6 +21,7 @@ pub fn make_span_from_request<B>(req: &http::Request<B>) -> tracing::Span {
         http.client.address = Empty, //%$request.connection_info().realip_remote_addr().unwrap_or(""),
         user_agent.original = user_agent(req),
         http.response.status_code = Empty, // to set on response
+        http.status_code = Empty, // to set on response (datadog attribute)
         url.path = req.uri().path(),
         url.query = req.uri().query(),
         url.scheme = url_scheme(req.uri()),
@@ -37,6 +38,7 @@ pub fn make_span_from_request<B>(req: &http::Request<B>) -> tracing::Span {
 pub fn update_span_from_response<B>(span: &tracing::Span, response: &http::Response<B>) {
     let status = response.status();
     span.record("http.response.status_code", status.as_u16());
+    span.record("http.status_code", status.as_u16());
 
     if status.is_server_error() {
         span.record("otel.status_code", "ERROR");
